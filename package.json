@@ -11,7 +11,8 @@
   "author": "Miszo Radomski",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "7.0.0"
+    "dotenv": "7.0.0",
+    "express": "4.16.4"
   },
   "devDependencies": {
     "nodemon": "1.18.10"
