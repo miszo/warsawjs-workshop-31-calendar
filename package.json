@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "test": "nodemon --exec 'jasmine \"test/*.test.js\"'",
+    "dev": "npx nodemon index.js",
+    "test": "npx jasmine \"test/*.test.js\"",
+    "test:watch": "npx nodemon --exec 'npm test'",
     "lint:staged": "npx lint-staged",
     "format": "npm run prettier -- --write",
     "prettier": "npx prettier \"**/*.js\"",
