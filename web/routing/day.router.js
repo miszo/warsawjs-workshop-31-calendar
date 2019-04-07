@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { getEventsByDate } = require('../services/events');
 
-router.get('/api/day', async (req, res) => {
+router.get('/day', async (req, res) => {
   const response = { data: [] };
 
   const events = await getEventsByDate(req.query.date);
@@ -12,5 +12,5 @@ router.get('/api/day', async (req, res) => {
 });
 
 module.exports = (app) => {
-  app.use(router);
+  app.use('/api', router);
 };

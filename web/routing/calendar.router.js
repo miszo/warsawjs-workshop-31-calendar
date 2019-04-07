@@ -4,7 +4,7 @@ const router = express.Router();
 const { buildCalendar } = require('../helpers/calendar');
 const { getEvents } = require('../services/events');
 
-router.get('/api/calendar', async (req, res) => {
+router.get('/calendar', async (req, res) => {
   const response = { data: [] };
 
   const dates = buildCalendar(req.params.month);
@@ -15,5 +15,5 @@ router.get('/api/calendar', async (req, res) => {
 });
 
 module.exports = (app) => {
-  app.use(router);
+  app.use('/api', router);
 };
