@@ -1,4 +1,15 @@
+const express = require("express");
+const supertest = require("supertest");
 
-it('runs jasmine', () => {
-  expect(1).toBe(1);
+const router = require("../web/routing/base.router");
+
+it("runs jasmine", async () => {
+  let app = express();
+  router(app);
+
+  const res = await supertest(app)
+    .get("/")
+    .expect(200);
+
+  expect(res.body.status).toBe("OK");
 });
