@@ -4,11 +4,20 @@ const router = express.Router();
 const { getEventsByDate } = require('../services/events');
 
 router.get('/day', async (req, res) => {
-  const response = { data: [] };
+  try {
+    const response = { data: [] };
 
-  const events = await getEventsByDate(req.query.date);
-  response.data = events;
-  res.json(response);
+    if (!date) {
+      console.warn('date argument was not provided in query');
+      return void res.json(response);
+    }
+
+    const events = await getEventsByDate(req.query.date);
+    response.data = events;
+    res.json(response);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 
 module.exports = (app) => {

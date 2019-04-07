@@ -18,7 +18,7 @@ beforeEach(() => {
 
 it('api/calendar exists', async () => {
   const res = await supertest(app)
-    .get('/api/calendar')
+    .get('/api/calendar?month=2019-04')
     .expect(200);
 });
 

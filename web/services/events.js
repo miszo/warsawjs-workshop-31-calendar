@@ -3,7 +3,7 @@ const EventModel = require('../../models/event-model');
 
 const createEvent = async (data) => {
   const model = await EventModel.create(data);
-  return model.save();
+  return model._id;
 };
 
 const removeEvent = async (id) => {
@@ -16,7 +16,7 @@ const updateEvent = async (id, data) => {
   return id;
 };
 
-async function getEvents(dates) {
+const getEvents = async (dates) => {
   const results = [];
 
   for (let date of dates) {
@@ -25,9 +25,9 @@ async function getEvents(dates) {
   }
 
   return results;
-}
+};
 
-async function getEventsByDate(date) {
+const getEventsByDate = async (date) => {
   const { start: $gte, end: $lte } = getDaysRange(date);
   const events = await EventModel.find({
     time: { $gte, $lte }
@@ -37,7 +37,7 @@ async function getEventsByDate(date) {
     event.id = event._id;
   });
   return events;
-}
+};
 
 module.exports = {
   getEvents,
