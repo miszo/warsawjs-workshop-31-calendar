@@ -9,8 +9,7 @@
     "test": "nodemon --exec 'jasmine \"test/*.test.js\"'",
     "lint:staged": "npx lint-staged",
     "format": "npm run prettier -- --write",
-    "prettier": "npx prettier \"**/*.js\"",
-    "format:staged": "npx prettier --write"
+    "prettier": "npx prettier \"**/*.js\""
   },
   "author": "Miszo Radomski",
   "license": "ISC",
