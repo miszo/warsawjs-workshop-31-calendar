@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Miszo Radomski",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "7.0.0"
+  }
 }
