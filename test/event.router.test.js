@@ -72,7 +72,7 @@ it('DELETE /api/event/:id can remove event', async () => {
     .send(eventFake());
 
   const res = await supertest(app)
-    .delete(`/api/event/${ createdEvent.body.id }`)
+    .delete(`/api/event/${createdEvent.body.id}`)
     .expect(200);
 
   expect(createdEvent.body.id).toBe(res.body.id);
@@ -85,7 +85,7 @@ it('PUT /api/event/:id can update event', async () => {
     .send(eventFake());
 
   const res = await supertest(app)
-    .put(`/api/event/${ createdEvent.body.id }`)
+    .put(`/api/event/${createdEvent.body.id}`)
     .set('Accept', 'application/json')
     .send(eventUpdateFake());
 

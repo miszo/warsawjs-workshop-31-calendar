@@ -1,0 +1,5 @@
+{
+  "linters": {
+    "**/*.js": ["npm run format:staged", "git add"]
+  }
+}

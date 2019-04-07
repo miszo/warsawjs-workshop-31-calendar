@@ -20,7 +20,6 @@ it('api/calendar exists', async () => {
   const res = await supertest(app)
     .get('/api/calendar')
     .expect(200);
-
 });
 
 it('/api/calendar response is valid', async () => {
@@ -28,7 +27,7 @@ it('/api/calendar response is valid', async () => {
   const validate = ajv.compile(schema);
 
   const res = await supertest(app)
-    .get('/api/calendar?month=???')
+    .get('/api/calendar?month=2019-04')
     .expect(200);
 
   const valid = validate(res.body);

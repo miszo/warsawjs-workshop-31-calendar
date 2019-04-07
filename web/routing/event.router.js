@@ -1,21 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const EventModel = require('../../models/event-model');
 
-const createEvent = async (data) => {
-  const model = await EventModel.create(data);
-  return model.save();
-};
-
-const removeEvent = async (id) => {
-  await EventModel.deleteOne({ _id: id });
-  return id;
-};
-
-const updateEvent = async (id, data) => {
-  await EventModel.updateOne({ _id: id }, data);
-  return id;
-};
+const { createEvent, removeEvent, updateEvent } = require('../services/events');
 
 router.post('/api/event', async (req, res) => {
   const respone = await createEvent(req.body);
