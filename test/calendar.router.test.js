@@ -33,7 +33,7 @@ it('/api/calendar response is valid', async () => {
     .expect(200);
 
   const valid = validate(res.body);
-  console.log(validate.errors);
+
   expect(valid).toBeTruthy();
   expect(validate.errors).toBeNull();
 });
