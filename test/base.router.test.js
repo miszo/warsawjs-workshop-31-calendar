@@ -3,12 +3,11 @@ const supertest = require('supertest');
 
 const router = require('../web/routing/base.router');
 
-it('runs jasmine', async () => {
+it('base router works', async () => {
   let app = express();
   router(app);
 
-  const res = await;
-  supertest(app)
+  const res = await supertest(app)
     .get('/')
     .expect(200);
 
