@@ -17,6 +17,13 @@ const eventFake = () => ({
   title: 'Potato'
 });
 
+const eventUpdateFake = () => ({
+  description: 'Beetroot desc',
+  notification: false,
+  time: '2019-04-24T23:55',
+  title: 'Beetroot'
+});
+
 beforeAll(async () => {
   await connect();
 });
@@ -58,7 +65,6 @@ it('POST /api/event response is valid', async () => {
   await EventModel.deleteOne({ _id: res.body.id });
 });
 
-
 it('DELETE /api/event/:id can remove event', async () => {
   const createdEvent = await supertest(app)
     .post('/api/event')
@@ -66,8 +72,27 @@ it('DELETE /api/event/:id can remove event', async () => {
     .send(eventFake());
 
   const res = await supertest(app)
-    .delete(`/api/event/${createdEvent.body.id}`)
+    .delete(`/api/event/${ createdEvent.body.id }`)
     .expect(200);
 
-  expect(createdEvent.body.id).toBe(res.body.id)
+  expect(createdEvent.body.id).toBe(res.body.id);
+});
+
+it('PUT /api/event/:id can update event', async () => {
+  const createdEvent = await supertest(app)
+    .post('/api/event')
+    .set('Accept', 'application/json')
+    .send(eventFake());
+
+  const res = await supertest(app)
+    .put(`/api/event/${ createdEvent.body.id }`)
+    .set('Accept', 'application/json')
+    .send(eventUpdateFake());
+
+  const updatedEvent = await EventModel.findById({ _id: res.body.id });
+
+  expect(createdEvent.body.id).toBe(res.body.id);
+  expect(updatedEvent.title).toBe(eventUpdateFake().title);
+
+  await EventModel.deleteOne({ _id: res.body.id });
 });
