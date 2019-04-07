@@ -1,5 +1,6 @@
 const express = require('express');
 const supertest = require('supertest');
+const bodyParser = require('body-parser');
 const Ajv = require('ajv');
 
 const router = require('../web/routing/calendar.router');
@@ -9,15 +10,13 @@ let ajv = null;
 
 beforeEach(() => {
   app = express();
+  app.use(bodyParser.json());
   router(app);
 
   ajv = new Ajv();
 });
 
 it('api/calendar exists', async () => {
-  let app = express();
-  router(app);
-
   const res = await supertest(app)
     .get('/api/calendar')
     .expect(200);
