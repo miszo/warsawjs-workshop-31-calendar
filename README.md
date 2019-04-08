@@ -18,7 +18,7 @@ przez [@G3F4](https://github.com/G3F4/warsawjs-workshop-31-calendar-client)
 * :white_check_mark: Podłączenie się od bazy danych (`npm/mongoose`)
 * :white_check_mark: Implementacja API na potrzeby części [klienckiej](https://github.com/G3F4/warsawjs-workshop-31-calendar-client) (`npm/dayjs`).
 
-+ `GET: /api/calendar?month={YYYY-MM}` — zwracanie danych do budowy kalendarza
+    + `GET: /api/calendar?month={YYYY-MM}` — zwracanie danych do budowy kalendarza
 
         <details><summary>response body</summary>
 
